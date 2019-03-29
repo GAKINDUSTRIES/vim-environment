@@ -1,0 +1,6 @@
+[submodule "sources_non_forked/sources_non_forked/ack.vim"]
+	path = sources_non_forked/sources_non_forked/ack.vim
+	url = git@github.com:mileszs/ack.vim.git
+[submodule "sources_non_forked/ag.vim"]
+	path = sources_non_forked/ag.vim
+	url = git@github.com:rking/ag.vim.git
