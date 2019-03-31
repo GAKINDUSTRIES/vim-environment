@@ -1,6 +1,24 @@
-[submodule "sources_non_forked/sources_non_forked/ack.vim"]
-	path = sources_non_forked/sources_non_forked/ack.vim
+[submodule "sources_non_forked/ack.vim"]
+	path = sources_non_forked/ack.vim
 	url = git@github.com:mileszs/ack.vim.git
 [submodule "sources_non_forked/ag.vim"]
 	path = sources_non_forked/ag.vim
 	url = git@github.com:rking/ag.vim.git
+[submodule "sources_non_forked/lightline"]
+	path = sources_non_forked/lightline
+	url = git@github.com:itchyny/lightline.vim.git
+[submodule "sources_non_forked/palenlight"]
+	path = sources_non_forked/palenlight
+	url = https://github.com/drewtempelmeyer/palenight.vim
+[submodule "sources_non_forked/vim-solarized8"]
+	path = sources_non_forked/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8
+[submodule "sources_non_forked/nord-vim"]
+	path = sources_non_forked/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim
+[submodule "sources_non_forked/vim-hybrid"]
+	path = sources_non_forked/vim-hybrid
+	url = https://github.com/w0ng/vim-hybrid
+[submodule "sources_non_forked/ayu-vim"]
+	path = sources_non_forked/ayu-vim
+	url = git@github.com:ayu-theme/ayu-vim.git
