@@ -87,6 +87,12 @@ nnoremap <silent> <leader>z :Goyo<cr>
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+""""""""""""""""""""""""""""""
+" => MRU plugin
+""""""""""""""""""""""""""""""
+let MRU_Max_Entries = 300
+map <leader>f :MRU<CR>
+
 
 """"""""""""""""""""""""""""""
 " => NERDTree
