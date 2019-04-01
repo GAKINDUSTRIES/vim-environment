@@ -73,3 +73,21 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " Goyo integration
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+
+""""""""""""""""""""""""""""""
+" => NERDTree
+""""""""""""""""""""""""""""""
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let g:NERDTreeWinSize=35
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr>
+
+" Avoid open files in NERDTree pane
+nnoremap <silent> <expr> <Leader>j (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+
+" Close vim if nerdtree is the only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
