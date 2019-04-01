@@ -31,3 +31,6 @@
 [submodule "sources_non_forked/emmet-vim"]
 	path = sources_non_forked/emmet-vim
 	url = https://github.com/mattn/emmet-vim
+[submodule "sources_non_forked/fzf.vim"]
+	path = sources_non_forked/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
