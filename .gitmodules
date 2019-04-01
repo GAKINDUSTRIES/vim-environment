@@ -34,3 +34,12 @@
 [submodule "sources_non_forked/fzf.vim"]
 	path = sources_non_forked/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
+[submodule "sources_non_forked/goyo.vim"]
+	path = sources_non_forked/goyo.vim
+	url = https://github.com/junegunn/goyo.vim
+[submodule "sources_non_forked/limelight.vim"]
+	path = sources_non_forked/limelight.vim
+	url = git@github.com:junegunn/limelight.vim.git
+[submodule "sources_non_forked/vim-zenroom2"]
+	path = sources_non_forked/vim-zenroom2
+	url = git@github.com:amix/vim-zenroom2.git
