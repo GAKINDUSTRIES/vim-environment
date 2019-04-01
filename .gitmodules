@@ -49,3 +49,6 @@
 [submodule "sources_non_forked/open_file_under_cursor.vim"]
 	path = sources_non_forked/open_file_under_cursor.vim
 	url = git@github.com:amix/open_file_under_cursor.vim.git
+[submodule "sources_non_forked/coc.nvim"]
+	path = sources_non_forked/coc.nvim
+	url = git@github.com:neoclide/coc.nvim.git

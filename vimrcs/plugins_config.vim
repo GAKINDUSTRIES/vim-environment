@@ -17,6 +17,19 @@ map <leader>o :BufExplorer<cr>
 
 
 """"""""""""""""""""""""""""""
+" => Coc
+""""""""""""""""""""""""""""""
+" Note: "It works on vim >= 8.1 and neovim >= 0.3.1.
+" Prerequisites: Need to install node and yarn first
+" Install using :call coc#util#install(), and create coc-settings.json (sample file on tmp/)
+" :CocInstall coc-snippets for snipMate integration
+
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+
+
+""""""""""""""""""""""""""""""
 " => Fzf
 """"""""""""""""""""""""""""""
 " Sync Fzf.vim with fzf
