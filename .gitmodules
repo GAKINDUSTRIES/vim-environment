@@ -46,3 +46,6 @@
 [submodule "sources_non_forked/nerdtree"]
 	path = sources_non_forked/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule "sources_non_forked/open_file_under_cursor.vim"]
+	path = sources_non_forked/open_file_under_cursor.vim
+	url = git@github.com:amix/open_file_under_cursor.vim.git
