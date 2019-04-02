@@ -52,3 +52,6 @@
 [submodule "sources_non_forked/coc.nvim"]
 	path = sources_non_forked/coc.nvim
 	url = git@github.com:neoclide/coc.nvim.git
+[submodule "sources_non_forked/ale"]
+	path = sources_non_forked/ale
+	url = git@github.com:w0rp/ale.git
