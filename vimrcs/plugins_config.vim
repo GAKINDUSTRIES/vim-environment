@@ -204,3 +204,11 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " https://github.com/mg979/vim-visual-multi/wiki/Quick-start#adding-cursors-vertically
 map ∆ <A-j>
 map ˚ <A-k>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-vroom (Ruby test vimux integration)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vroom_use_vimux = 1
+let g:vroom_clear_screen = 1
+let g:vroom_write_all = 1
