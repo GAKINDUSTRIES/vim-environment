@@ -142,7 +142,7 @@ let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => arpeggio()
+" => vim-arpeggio()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Skip next char and keep in insert mode (useful when using with autopairs)
@@ -150,3 +150,20 @@ call arpeggio#map('i', '', 0, 'kl', '<Esc>la')
 
 "Skip previous char and keep in insert mode
 call arpeggio#map('i', '', 0, 'ds', '<Esc>i')
+
+
+""""""""""""""""""""""""""""""
+" => vim-easymotion
+""""""""""""""""""""""""""""""
+
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+map <C-o> <Plug>(easymotion-bd-w)
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+
