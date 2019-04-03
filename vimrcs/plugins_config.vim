@@ -140,3 +140,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Trigger configuration to jump backward and forward
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => arpeggio()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Skip next char and keep in insert mode (useful when using with autopairs)
+call arpeggio#map('i', '', 0, 'kl', '<Esc>la')
+
+"Skip previous char and keep in insert mode
+call arpeggio#map('i', '', 0, 'ds', '<Esc>i')
