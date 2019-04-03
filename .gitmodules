@@ -85,3 +85,6 @@
 [submodule "sources_non_forked/vim-surround"]
 	path = sources_non_forked/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "sources_non_forked/vim-visual-multi"]
+	path = sources_non_forked/vim-visual-multi
+	url = https://github.com/mg979/vim-visual-multi

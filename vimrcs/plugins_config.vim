@@ -195,3 +195,12 @@ set signcolumn=yes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-visual-multi
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map Alt key for j and k to add cursors vertically
+" https://github.com/mg979/vim-visual-multi/wiki/Quick-start#adding-cursors-vertically
+map ∆ <A-j>
+map ˚ <A-k>
