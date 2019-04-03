@@ -88,3 +88,6 @@
 [submodule "sources_non_forked/vim-visual-multi"]
 	path = sources_non_forked/vim-visual-multi
 	url = https://github.com/mg979/vim-visual-multi
+[submodule "sources_non_forked/vimux"]
+	path = sources_non_forked/vimux
+	url = git@github.com:benmills/vimux.git
