@@ -131,3 +131,12 @@ nnoremap <silent> <expr> <Leader>j (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" 
 
 " Close vim if nerdtree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => UltiSnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Trigger configuration to jump backward and forward
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
