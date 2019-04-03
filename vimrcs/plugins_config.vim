@@ -198,7 +198,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-visual-multi
+" => Vim-visual-multi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map Alt key for j and k to add cursors vertically
 " https://github.com/mg979/vim-visual-multi/wiki/Quick-start#adding-cursors-vertically
@@ -212,3 +212,9 @@ map ˚ <A-k>
 let g:vroom_use_vimux = 1
 let g:vroom_clear_screen = 1
 let g:vroom_write_all = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-jsx
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0

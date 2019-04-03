@@ -91,3 +91,30 @@
 [submodule "sources_non_forked/vimux"]
 	path = sources_non_forked/vimux
 	url = git@github.com:benmills/vimux.git
+[submodule "sources_non_forked/vim-coffee-script"]
+	path = sources_non_forked/vim-coffee-script
+	url = git@github.com:kchmck/vim-coffee-script.git
+[submodule "sources_non_forked/vim-javascript"]
+	path = sources_non_forked/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
+[submodule "sources_non_forked/vim-jsx"]
+	path = sources_non_forked/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
+[submodule "sources_non_forked/vim-less"]
+	path = sources_non_forked/vim-less
+	url = git@github.com:groenewege/vim-less.git
+[submodule "sources_non_forked/vim-markdown"]
+	path = sources_non_forked/vim-markdown
+	url = git@github.com:tpope/vim-markdown.git
+[submodule "sources_non_forked/vim-go"]
+	path = sources_non_forked/vim-go
+	url = git@github.com:fatih/vim-go.git
+[submodule "sources_forked/nginx"]
+	path = sources_forked/nginx
+	url = https://github.com/vim-scripts/nginx.vim
+[submodule "sources_non_forked/vim-bundler"]
+	path = sources_non_forked/vim-bundler
+	url = https://github.com/tpope/vim-bundler
+[submodule "sources_non_forked/vim-rails"]
+	path = sources_non_forked/vim-rails
+	url = https://github.com/tpope/vim-rails
