@@ -167,3 +167,15 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim expand region (Vim smart selection)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
+
+" Use the global default + the following for ruby
+call expand_region#custom_text_objects('ruby', {
+      \ 'im' :1,
+      \ 'am' :1,
+      \ })
+

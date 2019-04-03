@@ -73,3 +73,6 @@
 [submodule "sources_non_forked/vim-endwise"]
 	path = sources_non_forked/vim-endwise
 	url = git@github.com:tpope/vim-endwise.git
+[submodule "sources_non_forked/vim-expand-region"]
+	path = sources_non_forked/vim-expand-region
+	url = git@github.com:terryma/vim-expand-region.git
