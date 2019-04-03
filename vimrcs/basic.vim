@@ -34,12 +34,18 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
+" Replace common escape key to return to normal mode
+:map! jk <ESC>
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+  nnoremap Y y$
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -190,6 +196,9 @@ set wrap "Wrap lines
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
+" Redraw console
+nmap <leader>R :redraw!<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -264,6 +273,9 @@ map 0 ^
 
 " Remap VIM $ to last character, ignoring line break
 map $ g_
+
+" Enter a new line below in normal mode
+nmap <CR> o<Esc>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
