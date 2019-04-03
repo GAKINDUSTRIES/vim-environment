@@ -64,3 +64,6 @@
 [submodule "sources_non_forked/vim-arpeggio"]
 	path = sources_non_forked/vim-arpeggio
 	url = git@github.com:kana/vim-arpeggio.git
+[submodule "sources_non_forked/vim-commentary"]
+	path = sources_non_forked/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git
