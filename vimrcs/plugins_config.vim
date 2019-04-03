@@ -181,9 +181,17 @@ call expand_region#custom_text_objects('ruby', {
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Git gutter (Git diff)
+" => Vim-Gitgutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled = 1
 let g:gitgutter_map_keys = 0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 set updatetime=100
+set signcolumn=yes
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-Surround
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vmap Si S(i_<esc>f)
+au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
