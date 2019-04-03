@@ -179,3 +179,11 @@ call expand_region#custom_text_objects('ruby', {
       \ 'am' :1,
       \ })
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Git gutter (Git diff)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
+nnoremap <silent> <leader>d :GitGutterToggle<cr>
+set updatetime=100
