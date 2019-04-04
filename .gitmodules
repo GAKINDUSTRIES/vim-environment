@@ -109,9 +109,6 @@
 [submodule "sources_non_forked/vim-go"]
 	path = sources_non_forked/vim-go
 	url = git@github.com:fatih/vim-go.git
-[submodule "sources_forked/nginx"]
-	path = sources_forked/nginx
-	url = https://github.com/vim-scripts/nginx.vim
 [submodule "sources_non_forked/vim-bundler"]
 	path = sources_non_forked/vim-bundler
 	url = https://github.com/tpope/vim-bundler
@@ -121,3 +118,6 @@
 [submodule "sources_non_forked/vim-dispatch"]
 	path = sources_non_forked/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
+[submodule "sources_non_forked/nginx"]
+	path = sources_non_forked/nginx
+	url = git@github.com:chr4/nginx.vim.git
