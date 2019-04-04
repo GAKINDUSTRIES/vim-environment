@@ -118,3 +118,6 @@
 [submodule "sources_non_forked/vim-rails"]
 	path = sources_non_forked/vim-rails
 	url = https://github.com/tpope/vim-rails
+[submodule "sources_non_forked/vim-dispatch"]
+	path = sources_non_forked/vim-dispatch
+	url = git@github.com:tpope/vim-dispatch.git
