@@ -207,6 +207,18 @@ map ˚ <A-k>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vimux ()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <space><space> :VimuxPromptCommand<CR>
+nmap <C-space> :VimuxRunCommand("clear")<CR>
+nmap <space>. :VimuxRunLastCommand<CR>
+nmap <space>q :VimuxInterruptRunner<CR>
+
+"Keep consistency with vim-vroom mappings
+nmap <space>a :VimuxRunCommand("clear;bundle exec rspec --color")<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-vroom (Ruby test vimux integration)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vroom_use_vimux = 1

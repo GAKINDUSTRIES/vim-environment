@@ -26,12 +26,14 @@ set guioptions-=L
 
 " Palenlight colorscheme CONF
 	colorscheme palenight
-	let g:lightline.colorscheme = 'palenight'
+	" let g:lightline.colorscheme = 'palenight'
+
+  let g:lightline = { 'colorscheme': 'palenight' }
 	let g:palenight_terminal_italics=1
 
 " One half colorscheme CONF
   " colorscheme onehalfdark
-  " let g:lightline.colorscheme='onehalfdark'
+  " let g:lightline = { 'colorscheme': 'onehalfdark' }
 
 " Ayu colorscheme CONF
   " let ayucolor="light"  " for light version of theme
