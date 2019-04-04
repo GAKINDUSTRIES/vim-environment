@@ -71,6 +71,8 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
 "Always show current position
 set ruler
 
@@ -172,12 +174,22 @@ set noswapfile
 " Use spaces instead of tabs
 set expandtab
 
-" Be smart when using tabs ;)
+" Use indents of 2 spaces
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+" Automatically indent braces
+set cindent
+
+" An indentation every 2 columns
+set shiftwidth=2
+
+" Let backspace delete indent
+set tabstop=2
+
+" Prevents inserting two spaces after punctuation on a join (J)
+set softtabstop=2
+
+set nojoinspaces
 
 " Linebreak on 500 characters
 set lbr
@@ -191,6 +203,9 @@ set wrap "Wrap lines
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
+" Set line number at start
+set number
+
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
