@@ -56,6 +56,9 @@ let g:coc_snippet_prev = '<S-TAB>'
 " Sync Fzf.vim with fzf
 set rtp+=/usr/local/opt/fzf
 
+" If installed using git
+set rtp+=~/.fzf
+
 nnoremap <leader>. :Tags<Cr>
 nnoremap <leader>l :Lines<Cr>
 
