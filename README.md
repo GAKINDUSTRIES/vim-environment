@@ -2,6 +2,7 @@
 
 Over the last years, I have been using Vim as my default Text Editor. It helped me to improve my productivity and it's fully customizable. Hope it can help you.
 
+This repository was inspired by the vim configuration provided by [amix](https://github.com/amix/vimrc)
 ### Prerequisites
 
 In order to make every plugin work, the following stuff need to be installed:
