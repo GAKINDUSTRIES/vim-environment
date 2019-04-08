@@ -1,0 +1,210 @@
+This file contains a list of the all the mappings included as well as the most common keystrokes combinations that I daily use.
+
+
+The leader is ',' so whenever you see <leader> it means ','
+
+""""""""""""""""""""""""""""""
+" => Basic
+""""""""""""""""""""""""""""""
+
+map! jk <ESC>                            : Replace common escape key to return to normal mode
+nmap <leader>w :w!<cr>                   : Fast saving
+map <leader>cd :cd %:p:h<cr>:pwd<cr>     : Switch CWD to the directory of the open buffer
+map <silent> <leader><cr> :noh<cr>       : Disable highlight
+nmap <leader>R :redraw!<CR>              : Redraw console
+map <silent> <leader><cr> :noh<cr>       : Disable highlight
+
+nmap <CR> o<Esc>                         : Enter a new line below in normal mode
+
+
+""""""""""""""""""""""""""""""
+" => Windows
+""""""""""""""""""""""""""""""
+
+:sp                                      : Create a horizontal split
+:vsp                                     : Create a vertical split
+
+nmap <Leader>+ :exe " resize +15 "<CR>   : Vertical increase of window
+nmap <Leader>- :exe " resize -15 "<CR>   : Vertical decrease of window
+
+nmap <Leader>> :exe "vertical resize +15 "<CR> :Horizontal increase of window
+nmap <Leader>< :exe "vertical resize -15 "<CR> :Horizontal decrease of window
+
+map <Leader>= <C-w>=                     : Normalize all split sizes, which is very handy when resizing terminal
+
+
+""""""""""""""""""""""""""""""
+" => Movement
+""""""""""""""""""""""""""""""
+
+map <C-j> <C-W>j                         : Move towards the window below (if any)
+map <C-k> <C-W>k                         : Move towards the window above (if any)
+map <C-h> <C-W>h                         : Move towards the left window (if any)
+map <C-l> <C-W>l                         : Move towards the right window (if any)
+
+
+" Within a file
+
+:34                                      : Go to the specified line
+gg                                       : Go to the beginning of the file
+G                                        : Go to the end of the file
+``                                       : Go to previous postion
+map <C-o> <Plug>(easymotion-bd-w)        : Move in the current file to a specific postion using easymotion
+
+
+""""""""""""""""""""""""""""""
+" => Tabs
+""""""""""""""""""""""""""""""
+
+map <leader>tn                           : Open a new tab
+map <leader>to                           : Keep only current tab, close others
+map <leader>tc                           : Close current tab
+map <leader>tp                           : Go to previous tab
+map <leader>t<leader>                    : Go to next tab
+map <leader>tl                           : Go to last tab
+map <leader>te                           : Open edition to a new tab in the same directory
+
+""""""""""""""""""""""""""""""
+" => Buffers
+""""""""""""""""""""""""""""""
+
+map <leader>o                            : Open buffers
+map <leader>q                            : Open a buffer to shoot ideas
+map <leader>bn                           : Creates a new buffer
+map <leader>bd                           : Delete current buffer
+map <leader>ba                           : Close all buffers
+map <leader>b<leader>                    : Next buffer
+map <leader>bp                           : Previous buffer
+
+<leader>f                                : Open MRU files
+
+""""""""""""""""""""""""""""""
+" => Spell Checking
+""""""""""""""""""""""""""""""
+
+map <leader>ss :setlocal spell!<cr>      : Pressing ,ss will toggle and untoggle spell checking
+
+: Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+
+""""""""""""""""""""""""""""""
+" => NERDTree
+""""""""""""""""""""""""""""""
+
+map <leader>nn :NERDTreeToggle<cr>       : Toggle nerdtree
+map <leader>nb :NERDTreeFromBookmark     : Opens a fresh NERDTree with the root initialized to the dir for <bookmark>
+map <leader>nf :NERDTreeFind<cr>         : Open nerdtree in the position of the current file
+
+
+""""""""""""""""""""""""""""""
+" => Autocompletion
+""""""""""""""""""""""""""""""
+On Insert mode:
+
+<ctrl>l                                  : Global line completion
+<ctrl>p                                  : Global path completion
+tab | enter                              : Suggested word completion
+<c-y>,                                   : Autocomplete html tags (for more info check [emmet]())
+
+
+""""""""""""""""""""""""""""""
+" => Search
+""""""""""""""""""""""""""""""
+
+<leader>j                                : Search file in the current directory (default fzf command)
+
+nnoremap <leader>. :Tags<Cr>             : Search within the tags
+nnoremap <leader>l :Lines<Cr>            : Search in lines (really useful)
+
+:Colors                                  : Search colorschemes
+:Buffers                                 : Search buffers
+:Commits                                 : Search in commits
+:History                                 : Search in history commands
+:Maps                                    : Search in all maps
+
+""""""""""""""""""""""""""""""
+" => Seach words
+""""""""""""""""""""""""""""""
+
+map <leader>g                            : Search a work or phrase though all the directory
+map gv :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>  : When press gv you Ag the selected text
+map <leader>r                            : Search an replace the selected text
+/                                        : Search within the current file using easymotion
+?                                        : Search whithin the current file
+
+""""""""""""""""""""""""""""""
+" => Brackets
+""""""""""""""""""""""""""""""
+
+vnoremap ) <esc>`>a)<esc>`<i(<esc>       : Insert round brackets to highlighted word
+vnoremap ( <esc>`>a ) <esc>`<i( <esc>    : Insert round brackets to highlighted word with space
+
+vnoremap ] <esc>`>a]<esc>`<i[<esc>       : Insert square parenthesis to highlighted word
+vnoremap [ <esc>`>a ]<esc>`<i[ <esc>     : Insert square parenthesis to highlighted word
+
+vnoremap } <esc>`>a}<esc>`<i{<esc>       : Insert curly braces to highlighted word
+vnoremap { <esc>`>a }<esc>`<i{ <esc>     : Insert curly braces to highlighted word
+
+vnoremap " <esc>`>a"<esc>`<i"<esc>       : Insert double quotes to highlighted word
+vnoremap ' <esc>`>a'<esc>`<i'<esc>       : Insert single quotes to highlighted word
+
+cs<patern1><pattern2>                    : Change pattern1 to pattern2 (in normal mode. See vim-surround)
+cs<patern1><pattern2>                    : Change pattern1 to pattern2 (in normal mode. See vim-surround)
+ds<pattern>                              : Delete pattern (in normal mode. See vim-surround)
+ysiw<pattern>                            : Insert pattern around a word (in normal mode. See vim-surround)
+VS<pattern>                              : Surround the highlighted text with pattern (in visual mode. See vim-surround)
+
+""""""""""""""""""""""""""""""
+" => Focus
+""""""""""""""""""""""""""""""
+
+<leader>z                                : Remove everything to keep focus (See goyo)
+
+""""""""""""""""""""""""""""""
+" => Multi-selection
+""""""""""""""""""""""""""""""
+
+<A-k>                                    : Add a cursor in the line above
+<A-j>                                    : Add a cursor in the line below
+<c-n>                                    : Add a new cursor that matches to the highlighted word
+<c-s>                                    : Skip a match, continue with the next
+
+""""""""""""""""""""""""""""""
+" => Smart selection
+""""""""""""""""""""""""""""""
+
+map K                                    : Expand selected region
+map J                                    : Shrink selected region
+
+
+""""""""""""""""""""""""""""""
+" => Misc
+""""""""""""""""""""""""""""""
+
+map <leader>e                            : Open my_configs.vimrc for edition
+map <leader>q                            : Open ~/buffer.md
+map <leader>x                            : Open ~/buffer
+=j :%!python -m json.tool<CR>            : Convert to human-editable JSON in your editor
+
+
+""""""""""""""""""""""""""""""
+" => Vimux
+""""""""""""""""""""""""""""""
+
+nmap <space><space> :VimuxPromptCommand<CR>  : Run a command in the console
+nmap <C-space> :VimuxRunCommand("clear")<CR> : Clear the console
+nmap <space>. :VimuxRunLastCommand<CR>       : Run last command executed in the console
+
+
+""""""""""""""""""""""""""""""
+" => Ruby only
+""""""""""""""""""""""""""""""
+
+silent! map <unique> <space>f :VroomRunTestFile<CR>     : Run tests of the current file
+silent! map <unique> <space>l :VroomRunNearestTest<CR>  : Run nearest test (useful for TDD)
+silent! map <unique> <space>. :VroomRunLastTest<CR>     : Run last test
+<space>a                                                : Run all tests
