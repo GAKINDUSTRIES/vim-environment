@@ -115,4 +115,4 @@ You can also install your own plugins via [pathogen](https://github.com/tpope/vi
 
 ## Key Mappings
 
-Find a list of the most useful mappings [here]()
+Find a list of the most useful mappings [here](https://github.com/GAKINDUSTRIES/vim-environment/blob/master/doc/reminders.txt)
