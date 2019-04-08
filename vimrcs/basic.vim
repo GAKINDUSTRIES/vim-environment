@@ -230,6 +230,17 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+"Horizontal resize of windows
+nnoremap <silent> <Leader>+ :exe " resize +15 "<CR>
+nnoremap <silent> <Leader>- :exe " resize -15 "<CR>
+
+"Vertical resize of windows
+nnoremap <silent> <Leader>> :exe "vertical resize +15 "<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize -15 "<CR>
+
+"Normalize all split sizes, which is very handy when resizing terminal
+map <Leader>= <C-w>=
+
 " Create a new buffer (vertical by default)
 map <leader>bn :vnew<cr>
 
