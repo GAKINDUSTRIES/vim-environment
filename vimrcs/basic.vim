@@ -35,7 +35,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Replace common escape key to return to normal mode
-:map! jk <ESC>
+map! jk <ESC>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -201,6 +201,9 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" Remove all trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
 
 
 """"""""""""""""""""""""""""""
