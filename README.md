@@ -40,6 +40,7 @@ I highly recommend reading the documentation of each plugin. You may find useful
 * [emmet.vim](https://github.com/mattn/emmet-vim): Support for expanding abbreviations for HTML & CSS
 * [fzf.vim](https://github.com/junegunn/fzf.vim): Fzf is a general-purpose command-line fuzzy finder
 * [goyo.vim](https://github.com/junegunn/goyo.vim) and [vim-zenroom2](https://github.com/amix/vim-zenroom2):Remove all clutter and focus only on the essential. Similar to iA Writer or Write Room [Read more here](http://amix.dk/blog/post/19744)
+* [IndentLine.vim](https://github.com/Yggdroot/indentLine): Display the indention levels with thin vertical lines.
 * [limelight.vim](https://github.com/junegunn/limelight.vim) Hyper-focus writing in vim
 * [NERD Tree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim
 * [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing `gf`
