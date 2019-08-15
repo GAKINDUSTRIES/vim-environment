@@ -35,11 +35,13 @@ I highly recommend reading the documentation of each plugin. You may find useful
 
 * [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack'
 * [ag.vim](https://github.com/rking/ag.vim): A much faster Ack
+* [ale.vim](https://github.com/dense-analysis/ale): Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support.
 * [auto pairs.vim](https://github.com/jiangmiao/auto-pairs): Insert or delete brackets, parens, quotes in pair
 * [bufexplorer.zip](https://github.com/jlanzarotta/bufexplorer): Buffer Explorer / Browser. This plugin can be opened with `<leader+o>`
+* [coc.vim](https://github.com/neoclide/coc.nvim): Intellisense engine for vim8 & neovim
 * [emmet.vim](https://github.com/mattn/emmet-vim): Support for expanding abbreviations for HTML & CSS
 * [fzf.vim](https://github.com/junegunn/fzf.vim): Fzf is a general-purpose command-line fuzzy finder
-* [goyo.vim](https://github.com/junegunn/goyo.vim) and [vim-zenroom2](https://github.com/amix/vim-zenroom2):Remove all clutter and focus only on the essential. Similar to iA Writer or Write Room [Read more here](http://amix.dk/blog/post/19744)
+* [goyo.vim](https://github.com/junegunn/goyo.vim) and [vim-zenroom2](https://github.com/amix/vim-zenroom2): Remove all clutter and focus only on the essential. Similar to iA Writer or Write Room [Read more here](http://amix.dk/blog/post/19744)
 * [IndentLine.vim](https://github.com/Yggdroot/indentLine): Display the indention levels with thin vertical lines.
 * [limelight.vim](https://github.com/junegunn/limelight.vim) Hyper-focus writing in vim
 * [NERD Tree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim
