@@ -349,8 +349,16 @@ map <leader>g :Ag! ""<Left>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-function SearchAndReplace(oldWorld, newWorld)
-    :Ag -l 'pattern' | xargs perl -pi -E 's/pattern/replacement/g'
+
+map <leader><Space> :call SearchAndReplace('')<Left><Left>
+
+function SearchAndReplace(replacement)
+    let l:pattern = expand("<cword>")
+
+    execute "Ag -l \"" . l:pattern . "\" | xargs perl -pi -E \'s/" . l:pattern . "/" . a:replacement . "/g\'"
+    execute "Ag! \"" . a:replacement . "\""
+
+    let @/ = l:pattern
 endfunction
 
 " Do :help cope if you are unsure what cope is. It's super useful!

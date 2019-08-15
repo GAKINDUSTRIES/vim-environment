@@ -133,6 +133,7 @@ nnoremap <leader>l :Lines<Cr>            : Search in lines (really useful)
 map <leader>g                            : Search a work or phrase though all the directory
 map gv :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>  : When press gv you Ag the selected text
 map <leader>r                            : Search an replace the selected text
+map <leader><space>                      : Search an replace in folder
 /                                        : Search within the current file using easymotion
 ?                                        : Search whithin the current file
 
