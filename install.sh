@@ -1,10 +1,11 @@
-cd ~/.vim-environment
+cd "$(dirname "$0")"
+DOTFILES_ROOT=$(pwd -P)
 
-echo 'set runtimepath+=~/.vim-environment
+echo "set runtimepath+=$DOTFILES_ROOT
 
-source ~/.vim-environment/vimrcs/basic.vim
-source ~/.vim-environment/vimrcs/filetypes.vim
-source ~/.vim-environment/vimrcs/plugins_config.vim
-source ~/.vim-environment/vimrcs/extended.vim' > ~/.vimrc
+source $DOTFILES_ROOT/vimrcs/basic.vim
+source $DOTFILES_ROOT/vimrcs/filetypes.vim
+source $DOTFILES_ROOT/vimrcs/plugins_config.vim
+source $DOTFILES_ROOT/vimrcs/extended.vim" > ~/.vimrc
 
 echo "Full configuration set. Happy coding :-)"
