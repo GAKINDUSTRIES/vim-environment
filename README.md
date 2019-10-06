@@ -24,6 +24,19 @@ sh ~/.vim-environment/install.sh
   -j8 is an optional performance optimization that became available in version 2.8, and fetches up to 8 submodules at a time in parallel
 
 
+### Post-installation
+
+After you run `install.sh` script, you need to install Coc plugin from inside Vim. To do this run the following command inside Vim:
+
+```
+:call coc#util#install()
+```
+This will install Coc. After that, you need to add `coc-snippets` plugin for snipMate integration. To do this, run the following command:
+
+```
+:CocInstall coc-snippets
+```
+
 ## How to install on Linux
 
 If you have vim aliased as `vi` instead of `vim`, make sure to either alias it: `alias vi=vim`. Otherwise, `apt-get install vim`
