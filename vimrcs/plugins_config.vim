@@ -94,6 +94,12 @@ inoremap <expr> <c-l> fzf#vim#complete(fzf#wrap({
   \ 'options': '--ansi --delimiter : --nth 3..',
   \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }}))
 
+" This line sets the word SearchAg as an alias
+" This alias is needed so we can use FZF for Ag, this means,
+" search in the entire directory using Ag and render results in FZF.
+" See vimrcs/basic.vim line 347 to see its use.
+autocmd VimEnter * command! -bang -nargs=* SearchAg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo

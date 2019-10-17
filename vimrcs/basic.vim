@@ -343,8 +343,8 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 " bind K to grep word under cursor
 nnoremap gv :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" Open Ag and put the cursor in the right position
-map <leader>g :Ag! ""<Left>
+" Use FZF for Ag (SearchAg as alias to avoid overwrite ag in other functions)
+map <leader>g :SearchAg<CR>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
