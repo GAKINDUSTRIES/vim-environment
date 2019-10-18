@@ -17,7 +17,7 @@ In order to make every plugin work, the following stuff need to be installed:
 To install the configuration, use the following commands:
 
 ```
-git clone https://github.com/amix/vimrc.git ~/.vim-environment
+git clone --recurse-submodules -j8 git@github.com:GAKINDUSTRIES/vim-environment.git
 sh ~/.vim-environment/install.sh
 ```
 
