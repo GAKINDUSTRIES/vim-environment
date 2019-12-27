@@ -16,6 +16,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 \                     'javascript': ['eslint'],
+\                     'go': ['gopls'],
 \                     'css': ['csslint'],
 \                     'html':['htmlhint'],
 \                   }
@@ -197,6 +198,13 @@ let g:gitgutter_map_keys = 0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 set updatetime=100
 set signcolumn=yes
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-Gitgutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
