@@ -95,6 +95,12 @@ inoremap <expr> <c-l> fzf#vim#complete(fzf#wrap({
   \ 'options': '--ansi --delimiter : --nth 3..',
   \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }}))
 
+" Switch current directory to the selected one by typing :Cd
+command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
+  \ {'source': 'find '.(empty(<f-args>) ? '.' : <f-args>).' -type d',
+  \  'sink': 'cd'}))
+
+
 " This line sets the word SearchAg as an alias
 " This alias is needed so we can use FZF for Ag, this means,
 " search in the entire directory using Ag and render results in FZF.
