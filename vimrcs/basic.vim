@@ -50,6 +50,9 @@ command W w !sudo tee % > /dev/null
 " Yank from the cursor to the end of the line, to be consistent with C and D.
   nnoremap Y y$
 
+" Enables mouse in all modes (including Tmux). Useful for scrolling
+set mouse=a
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
