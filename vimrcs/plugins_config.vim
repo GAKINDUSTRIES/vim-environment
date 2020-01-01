@@ -207,10 +207,10 @@ set signcolumn=yes
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-Gitgutter
+" => Vim-Go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+" Import libraries on save
+let g:go_fmt_command = "goimports"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
