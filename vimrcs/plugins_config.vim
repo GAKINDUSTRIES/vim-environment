@@ -22,10 +22,10 @@ let g:ale_linters = {
 \                   }
 
 " Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_sign_warning='●'
-hi ALEWarningSign ctermfg=yellow ctermbg=none
+hi ALEWarningSign ctermfg=yellow ctermbg=red
 
 
 """"""""""""""""""""""""""""""
@@ -57,6 +57,7 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-css',
+  \ 'coc-solargraph',
   \ ]
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -65,6 +66,16 @@ nmap <silent> gi <Plug>(coc-implementation)
 
 " Prettier configuration
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+""""""""""""""""""""""""""""""
+" => comfortable-motion.vim
+""""""""""""""""""""""""""""""
+
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(80)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-80)<CR>
+
+nnoremap <silent> <C-j> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-k> :call comfortable_motion#flick(-100)<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -121,13 +132,16 @@ command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
 " This alias is needed so we can use FZF for Ag, this means,
 " search in the entire directory using Ag and render results in FZF.
 " See vimrcs/basic.vim line 347 to see its use.
-autocmd VimEnter * command! -bang -nargs=* SearchAg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+autocmd VimEnter * command! -bang -nargs=* SearchAg call fzf#vim#ag(<q-args>, {'options': '--exact --delimiter : --nth 4..'}, <bang>0)
 
+" nnoremap <leader>b :Buffers<cr>
+nnoremap <Tab> :Buffers<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goyo_width=100
+let g:goyo_width= 200
+let g:goyo_margin_left= 50
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
@@ -137,14 +151,14 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " => Limelight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Goyo integration
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
 
 """"""""""""""""""""""""""""""
 " => MRU plugin
 """"""""""""""""""""""""""""""
-let MRU_Max_Entries = 300
-map <leader>f :MRU<CR>
+" let MRU_Max_Entries = 300
+" map <leader>f :MRU<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -195,9 +209,21 @@ let g:EasyMotion_smartcase = 1
 
 map <C-o> <Plug>(easymotion-bd-w)
 
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
 
+" incsearch.vim x fuzzy x vim-easymotion
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 0
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> / incsearch#go(<SID>config_easyfuzzymotion())
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim expand region (Vim smart selection)

@@ -127,9 +127,11 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
 " Add a bit extra margin to the left
 set foldcolumn=1
+
+" Highlight the current line
+set cursorline!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -159,7 +161,7 @@ if has("gui_running")
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+set encoding=UTF-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -251,7 +253,7 @@ map <Leader>= <C-w>=
 map <leader>bn :vnew<cr>
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -266,6 +268,8 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>t<leader> :tabnext<cr>
+map <S-l> :tabnext<cr>
+map <S-h> :tabprevious<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
