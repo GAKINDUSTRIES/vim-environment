@@ -118,3 +118,27 @@
 [submodule "sources_non_forked/nginx"]
 	path = sources_non_forked/nginx
 	url = git@github.com:chr4/nginx.vim.git
+[submodule "vim-devicons"]
+	path = vim-devicons
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/vim-devicons
+[submodule "comfortable-motion.vim"]
+	path = comfortable-motion.vim
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/comfortable-motion.vim
+[submodule "incsearch.vim"]
+	path = incsearch.vim
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/incsearch.vim
+[submodule "incsearch-fuzzy.vim"]
+	path = incsearch-fuzzy.vim
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/incsearch-fuzzy.vim
+[submodule "incsearch-easymotion.vim"]
+	path = incsearch-easymotion.vim
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/incsearch-easymotion.vim
+[submodule "material.vim"]
+	path = material.vim
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/material.vim
+[submodule "vim-textobj-rubyblock"]
+	path = vim-textobj-rubyblock
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/vim-textobj-rubyblock
+[submodule "vim-textobj-user"]
+	path = vim-textobj-user
+	url = /Users/guille/dev/dotfiles/vim-environment/sources_non_forked/vim-textobj-user
