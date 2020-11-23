@@ -1,9 +1,9 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
-  set background=dark
-  set termguicolors
+" set background=dark
+set termguicolors
 
 " Palenlight colorscheme CONF
 	colorscheme palenight

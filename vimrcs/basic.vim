@@ -56,7 +56,11 @@ set mouse=a
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+<<<<<<< HEAD
 " Set 5 lines to the cursor - when moving vertically using j/k
+=======
+" Set 7 lines to the cursor - when moving vertically using j/k
+>>>>>>> wip
 set so=5
 
 " Avoid garbled characters in Chinese language windows OS
@@ -106,17 +110,24 @@ set ttyfast
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+<<<<<<< HEAD
 " set cursorline
 
+=======
+>>>>>>> wip
 " This selects the default regexp engine. |two-engines|
 " The possible values are:
   " 0  automatic selection
   " 1  old engine
   " 2  NFA engine
+<<<<<<< HEAD
 " set regexpengine=0
 
 " Faster redraw for ruby files
 " autocmd FileType ruby setlocal regexpengine=1
+=======
+set regexpengine=1
+>>>>>>> wip
 
 " For regular expressions turn magic on
 set magic
@@ -140,9 +151,6 @@ endif
 
 " Add a bit extra margin to the left
 set foldcolumn=1
-
-" Highlight the current line
-set cursorline!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -308,11 +316,14 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
 
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" Disable status line. Improves scrolling somehow
+set noshowmode
+set noruler
+set noshowcmd
+
+" Do not show status line
+set laststatus=0
 
 " Disable status line. Improves scrolling somehow
 " set noshowmode
@@ -459,6 +470,14 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+<<<<<<< HEAD
+=======
+function! CopyFile()
+  let new_file_name = input('New file name: ', expand('%:p'), 'file')
+  exec ":saveas " . new_file_name
+endfunction
+
+>>>>>>> wip
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
