@@ -43,8 +43,7 @@ set termguicolors
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>e :e! ~/.vim-environment/my_configs.vim<cr>
-autocmd! bufwritepost vimrc source ~/.vim-environment/my_configs.vim
-
+call SourceIfExists("~/.vim-environment/my_configs.vim")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
