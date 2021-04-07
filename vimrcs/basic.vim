@@ -359,8 +359,8 @@ map <leader><Space> :call SearchAndReplace('')<Left><Left>
 function SearchAndReplace(replacement)
   let l:pattern = expand("<cword>")
 
-  execute "Ag -l \"" . l:pattern . "\" | xargs perl -pi -E \'s/" . l:pattern . "/" . a:replacement . "/g\'"
-  execute "Ag! \"" . a:replacement . "\""
+  execute "!Ag -l \"" . l:pattern . "\" | xargs perl -pi -E \'s/" . l:pattern . "/" . a:replacement . "/g\'"
+  execute "!Ag \"" . a:replacement . "\""
 
   let @/ = l:pattern
 endfunction

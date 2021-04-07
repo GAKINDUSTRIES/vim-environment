@@ -21,6 +21,7 @@ call plug#begin('~/.vim-environment/sources_non_forked')
   Plug 'skalnik/vim-vroom'
   Plug 'benmills/vimux'
   Plug 'tpope/vim-rails'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 
@@ -137,6 +138,15 @@ command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
 " See vimrcs/basic.vim line 347 to see its use.
 autocmd VimEnter * command! -bang -nargs=* SearchAg call fzf#vim#ag(<q-args>, {'options': '--exact --delimiter : --nth 4..'}, <bang>0)
 nnoremap <Tab> :Buffers<cr>
+
+
+" ag command suffix, [options]
+function AgRaw(command_suffix, ...)
+   return call('fzf#vim#grep', extend(['ag --nogroup --column --color  -- ''^(?=.)'' '.a:command_suffix, 1], a:000))
+ endfunction
+
+ " Search inside a specific folder
+command! -bang -nargs=+ -complete=dir Rag call AgRaw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 
 """"""""""""""""""""""""""""""
