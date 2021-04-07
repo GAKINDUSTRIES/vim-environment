@@ -200,8 +200,8 @@ nmap <silent> <space>v :TestVisit<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Vim-visual-multi
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Map Alt key for j and k to add cursors vertically
-"" https://github.com/mg979/vim-visual-multi/wiki/Quick-start#adding-cursors-vertically
+" Map Alt key for j and k to add cursors vertically
+" https://github.com/mg979/vim-visual-multi/wiki/Quick-start#adding-cursors-vertically
 map ∆ <M-j>
 map ˚ <M-k>
 
