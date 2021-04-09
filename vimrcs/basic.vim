@@ -269,14 +269,14 @@ map <leader>bp :bprevious<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>t<leader> :tabnext<cr>
+map <leader>th :tabprevious<cr>
+map <leader>tl :tabnext<cr>
 map <S-l> :tabnext<cr>
 map <S-h> :tabprevious<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <leader>t<leader> :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path

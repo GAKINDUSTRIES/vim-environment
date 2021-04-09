@@ -22,6 +22,7 @@ call plug#begin('~/.vim-environment/sources_non_forked')
   Plug 'benmills/vimux'
   Plug 'tpope/vim-rails'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'junegunn/goyo.vim'
 call plug#end()
 
 
@@ -137,8 +138,16 @@ command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
 " search in the entire directory using Ag and render results in FZF.
 " See vimrcs/basic.vim line 347 to see its use.
 autocmd VimEnter * command! -bang -nargs=* SearchAg call fzf#vim#ag(<q-args>, {'options': '--exact --delimiter : --nth 4..'}, <bang>0)
-nnoremap <Tab> :Buffers<cr>
+nnoremap <Tab> :Windows<cr>
+nnoremap <S-Tab> :Buffers<cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Goyo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:goyo_width=100
+let g:goyo_margin_top = 0
+let g:goyo_margin_bottom = 0
+nnoremap <silent> <leader>z :Goyo<cr>
 
 " ag command suffix, [options]
 function AgRaw(command_suffix, ...)
@@ -166,6 +175,11 @@ nnoremap <silent> <expr> <Leader>j (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" 
 " Close vim if nerdtree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+
+""""""""""""""""""""""""""""""
+" => Open file under cursor
+""""""""""""""""""""""""""""""
+nmap <space>o <c-w>gf
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => vim-arpeggio()
