@@ -111,23 +111,34 @@ set ttyfast
 set lazyredraw
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 " set cursorline
 
 =======
 >>>>>>> wip
+=======
+" set cursorline
+
+>>>>>>> Preparing everything to move from Tmux + Vimux to Kitty + mykitten +
 " This selects the default regexp engine. |two-engines|
 " The possible values are:
   " 0  automatic selection
   " 1  old engine
   " 2  NFA engine
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Preparing everything to move from Tmux + Vimux to Kitty + mykitten +
 " set regexpengine=0
 
 " Faster redraw for ruby files
 " autocmd FileType ruby setlocal regexpengine=1
+<<<<<<< HEAD
 =======
 set regexpengine=1
 >>>>>>> wip
+=======
+>>>>>>> Preparing everything to move from Tmux + Vimux to Kitty + mykitten +
 
 " For regular expressions turn magic on
 set magic
@@ -470,14 +481,6 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-<<<<<<< HEAD
-=======
-function! CopyFile()
-  let new_file_name = input('New file name: ', expand('%:p'), 'file')
-  exec ":saveas " . new_file_name
-endfunction
-
->>>>>>> wip
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
