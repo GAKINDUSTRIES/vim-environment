@@ -3,10 +3,8 @@
 """"""""""""""""""""""""""""""
 
 call plug#begin('~/.vim-environment/sources_non_forked')
-  Plug 'scrooloose/nerdtree'
   Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-  Plug 'ryanoasis/vim-devicons'
+  Plug 'kassio/neoterm'
   Plug 'junegunn/fzf.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'airblade/vim-gitgutter'
@@ -18,31 +16,32 @@ call plug#begin('~/.vim-environment/sources_non_forked')
   Plug 'tpope/vim-surround'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'tpope/vim-fugitive'
-  Plug 'skalnik/vim-vroom'
-  Plug 'benmills/vimux'
+  Plug 'vim-test/vim-test'
   Plug 'tpope/vim-rails'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'junegunn/goyo.vim'
+  Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 
-""""""""""""""""""""""""""""""
-" => vim-nerdtree-syntax-highlight
 
-""""""""""""""""""""""""""""""
+" #############################################
+"  Vim-test
+" #############################################
 
-let NERDTreeHighlightCursorline = 0
-let g:NERDTreeLimitedSyntax = 1
-let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico']
+let test#strategy = "kitty"
 
-let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
-let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
+let test#ruby#bundle_exec = 1
+let test#ruby#use_binstubs = 0
 
-let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExtensionHighlightColor['md']='31B53E'
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> <space>l :TestNearest<CR>
+nmap <silent> <space>f :TestFile<CR>
+nmap <silent> <space>a :TestSuite<CR>
+nmap <silent> <space>. :TestLast<CR>
+nmap <silent> <space>v :TestVisit<CR>
 
-let g:WebDevIconsDefaultFolderSymbolColor='F5C06F' " sets the color for folders that did not match any rule
-let g:WebDevIconsDefaultFileSymbolColor='689FB6' " sets the color for files that did not match any rule
+
 
 """""""""""""""""""""""""""""""
 "" => bufExplorer plugin
@@ -81,7 +80,17 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 
 "" Prettier configuration
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+
+
+"""""""""""""""""""""""""""""""
+"" => Coc-explorer
+"""""""""""""""""""""""""""""""
+
+nnoremap <space>e :CocCommand explorer<CR>
+
+
 
 """""""""""""""""""""""""""""""
 "" => Fzf
@@ -161,19 +170,19 @@ command! -bang -nargs=+ -complete=dir Rag call AgRaw(<q-args>, {'options': '--de
 """"""""""""""""""""""""""""""
 " => NERDTree
 """"""""""""""""""""""""""""""
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr>
+" let g:NERDTreeWinPos = "right"
+" let NERDTreeShowHidden=0
+" let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+" let g:NERDTreeWinSize=35
+" map <leader>nn :NERDTreeToggle<cr>
+" map <leader>nb :NERDTreeFromBookmark
+" map <leader>nf :NERDTreeFind<cr>
 
 " Avoid open files in NERDTree pane
 nnoremap <silent> <expr> <Leader>j (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 
-" Close vim if nerdtree is the only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" " Close vim if nerdtree is the only window left
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 """"""""""""""""""""""""""""""
@@ -251,25 +260,25 @@ let g:VM_maps["Select Cursor Up"]   = '<M-k>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Vimux ()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <space><space> :VimuxPromptCommand<CR>
-nmap <C-space> :VimuxRunCommand("clear")<CR>
-nmap <space>. :VimuxRunLastCommand<CR>
-nmap <space>q :VimuxInterruptRunner<CR>
+"nmap <space><space> :VimuxPromptCommand<CR>
+"nmap <C-space> :VimuxRunCommand("clear")<CR>
+"nmap <space>. :VimuxRunLastCommand<CR>
+"nmap <space>q :VimuxInterruptRunner<CR>
 
-"Keep consistency with vim-vroom mappings
-nmap <space>a :VimuxRunCommand("clear;bundle exec rspec --color")<CR>
+""Keep consistency with vim-vroom mappings
+"nmap <space>a :VimuxRunCommand("clear;bundle exec rspec --color")<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Vim-vroom (Ruby test vimux integration)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vroom_use_vimux = 1
-let g:vroom_clear_screen = 1
-let g:vroom_write_all = 1
+" let g:vroom_use_vimux = 1
+" let g:vroom_clear_screen = 1
+" let g:vroom_write_all = 1
 
-silent! map <unique> <space>f :VroomRunTestFile<CR>
-silent! map <unique> <space>l :VroomRunNearestTest<CR>
-silent! map <unique> <space>. :VroomRunLastTest<CR>
+" silent! map <unique> <space>f :VroomRunTestFile<CR>
+" silent! map <unique> <space>l :VroomRunNearestTest<CR>
+" silent! map <unique> <space>. :VroomRunLastTest<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

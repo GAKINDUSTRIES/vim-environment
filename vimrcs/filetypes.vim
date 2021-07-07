@@ -10,4 +10,5 @@ autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " Convert to human-editable JSON in your editor
 command! -bar -bang ToJson
       \ exec ':%!python -m json.tool' |
-      \ exec ':set syntax=json'
+      \ exec ':set syntax=json' |
+      \ exec ':set foldmethod=syntax'

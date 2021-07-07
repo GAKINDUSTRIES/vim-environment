@@ -106,12 +106,17 @@ set ttyfast
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+" set cursorline
+
 " This selects the default regexp engine. |two-engines|
 " The possible values are:
   " 0  automatic selection
   " 1  old engine
   " 2  NFA engine
-set regexpengine=1
+" set regexpengine=0
+
+" Faster redraw for ruby files
+" autocmd FileType ruby setlocal regexpengine=1
 
 " For regular expressions turn magic on
 set magic
