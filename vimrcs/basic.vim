@@ -78,9 +78,6 @@ endif
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-"Always show current position
-set ruler
-
 " Height of the command bar
 set cmdheight=1
 
