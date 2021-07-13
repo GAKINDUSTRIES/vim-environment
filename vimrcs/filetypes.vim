@@ -3,10 +3,13 @@
 """"""""""""""""""""""""""""""
 
 " Recognize .md as markdown
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => JSON section
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Convert to human-editable JSON in your editor
-nmap =j :%!python -m json.tool<CR>
+command! -bar -bang ToJson
+      \ exec ':%!python -m json.tool' |
+      \ exec ':set syntax=json' |
+      \ exec ':set foldmethod=syntax'
