@@ -355,27 +355,13 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 map <leader><Space> :call SearchAndReplace('')<Left><Left>
 
 function SearchAndReplace(replacement)
-    let l:pattern = expand("<cword>")
+  let l:pattern = expand("<cword>")
 
-    execute "Ag -l \"" . l:pattern . "\" | xargs perl -pi -E \'s/" . l:pattern . "/" . a:replacement . "/g\'"
-    execute "Ag! \"" . a:replacement . "\""
+  execute "!Ag -l \"" . l:pattern . "\" | xargs perl -pi -E \'s/" . l:pattern . "/" . a:replacement . "/g\'"
+  execute "!Ag \"" . a:replacement . "\""
 
-    let @/ = l:pattern
+  let @/ = l:pattern
 endfunction
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ag, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
