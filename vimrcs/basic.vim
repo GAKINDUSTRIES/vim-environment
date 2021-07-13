@@ -56,11 +56,7 @@ set mouse=a
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-<<<<<<< HEAD
 " Set 5 lines to the cursor - when moving vertically using j/k
-=======
-" Set 7 lines to the cursor - when moving vertically using j/k
->>>>>>> wip
 set so=5
 
 " Avoid garbled characters in Chinese language windows OS
@@ -110,35 +106,17 @@ set ttyfast
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 " set cursorline
 
-=======
->>>>>>> wip
-=======
-" set cursorline
-
->>>>>>> Preparing everything to move from Tmux + Vimux to Kitty + mykitten +
 " This selects the default regexp engine. |two-engines|
 " The possible values are:
   " 0  automatic selection
   " 1  old engine
   " 2  NFA engine
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Preparing everything to move from Tmux + Vimux to Kitty + mykitten +
 " set regexpengine=0
 
 " Faster redraw for ruby files
 " autocmd FileType ruby setlocal regexpengine=1
-<<<<<<< HEAD
-=======
-set regexpengine=1
->>>>>>> wip
-=======
->>>>>>> Preparing everything to move from Tmux + Vimux to Kitty + mykitten +
 
 " For regular expressions turn magic on
 set magic
