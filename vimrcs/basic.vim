@@ -9,7 +9,6 @@
 "    -> Status line
 "    -> Editing mappings
 "    -> vimgrep searching and cope displaying
-"    -> Spell checking
 "    -> Misc
 "    -> Helper functions
 "
@@ -377,19 +376,6 @@ endfunction
 "
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
