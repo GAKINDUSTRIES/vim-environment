@@ -1,49 +1,35 @@
 """"""""""""""""""""""""""""""
-" => Load pathogen paths
+" => Load vimplug paths
 """"""""""""""""""""""""""""""
-call pathogen#infect('~/.vim-environment/sources_forked/{}')
-call pathogen#infect('~/.vim-environment/sources_non_forked/{}')
-call pathogen#helptags()
+
+call plug#begin('~/.vim-environment/sources_non_forked')
+  Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'kassio/neoterm'
+  Plug 'junegunn/fzf.vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-commentary'
+  Plug 'itchyny/lightline.vim'
+  Plug 'honza/vim-snippets'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'terryma/vim-expand-region'
+  Plug 'tpope/vim-surround'
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  Plug 'tpope/vim-fugitive'
+  Plug 'vim-test/vim-test'
+  Plug 'tpope/vim-rails'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'junegunn/goyo.vim'
+  Plug 'ayu-theme/ayu-vim'
+call plug#end()
 
 
-""""""""""""""""""""""""""""""
-" => Ale
-""""""""""""""""""""""""""""""
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'ruby': ['rubocop'],
-\}
-
-let g:ale_linters = {
-\                     'javascript': ['eslint'],
-\                     'go': ['gopls'],
-\                     'css': ['csslint'],
-\                     'html':['htmlhint'],
-\                   }
-
-" Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
-
-let g:ale_sign_warning='●'
-hi ALEWarningSign ctermfg=yellow ctermbg=none
-
-
-""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp= 0
-let g:bufExplorerShowRelativePath= 1
-let g:bufExplorerFindActive= 1
-let g:bufExplorerSortBy= 'mru'
-map <leader>o :BufExplorer<cr>
-
-
-""""""""""""""""""""""""""""""
-" => Coc
-""""""""""""""""""""""""""""""
-" Note: "It works on vim >= 8.1 and neovim >= 0.3.1.
-" Prerequisites: Need to install node and yarn first
-" Install using :call coc#util#install(), and create coc-settings.json (sample file on tmp/)
+"""""""""""""""""""""""""""""""
+"" => Coc
+"""""""""""""""""""""""""""""""
+"" Note: "It works on vim >= 8.1 and neovim >= 0.3.1.
+"" Prerequisites: Need to install node and yarn first
+"" Install using :call coc#util#install(), and create coc-settings.json (sample file on tmp/)
 
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:coc_snippet_next = '<TAB>'
@@ -57,19 +43,23 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-css',
+  \ 'coc-solargraph'
   \ ]
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 
-" Prettier configuration
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+"""""""""""""""""""""""""""""""
+"" => Coc-explorer
+"""""""""""""""""""""""""""""""
+nnoremap <space>e :CocCommand explorer<CR>
 
 
-""""""""""""""""""""""""""""""
-" => Fzf
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""
+"" => Fzf
+"""""""""""""""""""""""""""""""
 " Sync Fzf.vim with fzf
 set rtp+=/usr/local/opt/fzf
 
@@ -79,10 +69,10 @@ set rtp+=~/.fzf
 nnoremap <leader>. :Tags<Cr>
 nnoremap <leader>l :Lines<Cr>
 
-" Remove Status line
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+" Leave the window attached to the button
+let g:fzf_layout = { 'down': '~40%' }
+" Optional enable preview window
+let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -121,87 +111,48 @@ command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
 " This alias is needed so we can use FZF for Ag, this means,
 " search in the entire directory using Ag and render results in FZF.
 " See vimrcs/basic.vim line 347 to see its use.
-autocmd VimEnter * command! -bang -nargs=* SearchAg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
+autocmd VimEnter * command! -bang -nargs=* SearchAg call fzf#vim#ag(<q-args>, {'options': '--exact --delimiter : --nth 4..'}, <bang>0)
+nnoremap <Tab> :Windows<cr>
+nnoremap <S-Tab> :Buffers<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:goyo_width=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
+let g:goyo_margin_top = 0
+let g:goyo_margin_bottom = 0
 nnoremap <silent> <leader>z :Goyo<cr>
 
+" ag command suffix, [options]
+function AgRaw(command_suffix, ...)
+   return call('fzf#vim#grep', extend(['ag --nogroup --column --color  -- ''^(?=.)'' '.a:command_suffix, 1], a:000))
+ endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Limelight
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Goyo integration
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-""""""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 300
-map <leader>f :MRU<CR>
+ " Search inside a specific folder
+command! -bang -nargs=+ -complete=dir Rag call AgRaw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 
 """"""""""""""""""""""""""""""
-" => NERDTree
+" => Open file under cursor
 """"""""""""""""""""""""""""""
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr>
-
-" Avoid open files in NERDTree pane
-nnoremap <silent> <expr> <Leader>j (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
-
-" Close vim if nerdtree is the only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap <space>o <c-w>gf
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UltiSnips
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Trigger configuration to jump backward and forward
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-arpeggio()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Skip next char and keep in insert mode (useful when using with autopairs)
-call arpeggio#map('i', '', 0, 'kl', '<Esc>la')
-
-"Skip previous char and keep in insert mode
-call arpeggio#map('i', '', 0, 'ds', '<Esc>i')
-
-
-""""""""""""""""""""""""""""""
-" => vim-easymotion
-""""""""""""""""""""""""""""""
-
+"""""""""""""""""""""""""""""""
+"" => vim-easymotion
+"""""""""""""""""""""""""""""""
 " Disable default mappings
 let g:EasyMotion_do_mapping = 0
+
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
 
 map <C-o> <Plug>(easymotion-bd-w)
 
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim expand region (Vim smart selection)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => Vim expand region (Vim smart selection)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
@@ -212,9 +163,9 @@ call expand_region#custom_text_objects('ruby', {
       \ })
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-Gitgutter
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => Vim-Gitgutter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled = 1
 let g:gitgutter_map_keys = 0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
@@ -222,50 +173,40 @@ set updatetime=100
 set signcolumn=yes
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-Go
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Import libraries on save
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => Vim-Go
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Import libraries on save
 let g:go_fmt_command = "goimports"
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-Surround
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vmap Si S(i_<esc>f)
-au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+" #############################################
+"  Vim-test
+" #############################################
+
+let test#strategy = "kitty"
+
+let test#ruby#bundle_exec = 1
+let test#ruby#use_binstubs = 0
+
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> <space>l :TestNearest<CR>
+nmap <silent> <space>f :TestFile<CR>
+nmap <silent> <space>a :TestSuite<CR>
+nmap <silent> <space>. :TestLast<CR>
+nmap <silent> <space>v :TestVisit<CR>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-visual-multi
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map Alt key for j and k to add cursors vertically
-" https://github.com/mg979/vim-visual-multi/wiki/Quick-start#adding-cursors-vertically
-map ∆ <A-j>
-map ˚ <A-k>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => Vim-visual-multi
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Map Alt key for j and k to add cursors vertically
+"" https://github.com/mg979/vim-visual-multi/wiki/Quick-start#adding-cursors-vertically
+map ∆ <M-j>
+map ˚ <M-k>
 
+let g:VM_default_mappings = 0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vimux ()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <space><space> :VimuxPromptCommand<CR>
-nmap <C-space> :VimuxRunCommand("clear")<CR>
-nmap <space>. :VimuxRunLastCommand<CR>
-nmap <space>q :VimuxInterruptRunner<CR>
-
-"Keep consistency with vim-vroom mappings
-nmap <space>a :VimuxRunCommand("clear;bundle exec rspec --color")<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-vroom (Ruby test vimux integration)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vroom_use_vimux = 1
-let g:vroom_clear_screen = 1
-let g:vroom_write_all = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-jsx
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jsx_ext_required = 0
+let g:VM_maps = {}
+let g:VM_maps["Select Cursor Down"] = '<M-j>'
+let g:VM_maps["Select Cursor Up"]   = '<M-k>'
