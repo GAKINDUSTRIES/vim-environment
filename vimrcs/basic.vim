@@ -321,10 +321,10 @@ map $ g_
 nmap <CR> o<Esc>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <S-j> mz:m+<cr>`z
+nmap <S-k> mz:m-2<cr>`z
+vmap <S-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <S-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Note: works only on MacVim
 if has("mac") || has("macunix")
@@ -333,15 +333,6 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
