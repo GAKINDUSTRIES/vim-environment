@@ -1,7 +1,6 @@
 """"""""""""""""""""""""""""""
 " => Markdown section
 """"""""""""""""""""""""""""""
-
 " Recognize .md as markdown
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
