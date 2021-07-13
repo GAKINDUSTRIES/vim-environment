@@ -1,14 +1,14 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
-  set background=dark
-  set termguicolors
+" set background=dark
+set termguicolors
 
 " Palenlight colorscheme CONF
 	colorscheme palenight
 
-  let g:lightline = { 'colorscheme': 'palenight' }
+  let g:lightline = { 'colorscheme': 'material' }
 	let g:palenight_terminal_italics=1
 
 " One half colorscheme CONF
@@ -37,7 +37,7 @@
         " solarized8_low: low-contrast variant;
         " solarized8_high: high-contrast variant;
         " solarized8_flat: ÒflatÓ variant (not present in the original Solarized, see screenshots above).
-  " colorscheme solarized8_flat
+  " colorscheme solarized8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
