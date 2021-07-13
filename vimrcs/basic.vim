@@ -106,6 +106,18 @@ set ttyfast
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+" set cursorline
+
+" This selects the default regexp engine. |two-engines|
+" The possible values are:
+  " 0  automatic selection
+  " 1  old engine
+  " 2  NFA engine
+" set regexpengine=0
+
+" Faster redraw for ruby files
+" autocmd FileType ruby setlocal regexpengine=1
+
 " For regular expressions turn magic on
 set magic
 
@@ -376,14 +388,55 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Copy current buffer path to clipboard
+nmap <leader>fp :let @+ = expand("%")<cr>
+
+" Clone a file into a given directory
+nmap <leader>cp :call CopyFile()<cr>
+
+" Delete file and buffer
+nmap <leader>dl :call DeleteFile<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! s:fcall(fn, path, ...) abort
+  return call(s:ffn(a:fn, a:path), [a:path] + a:000)
+endfunction
+
+function! s:ffn(fn, path) abort
+  let ns = tr(matchstr(a:path, '^\a\a\+:'), ':', '#')
+  let fn = ns . a:fn
+  if len(ns) && !exists('*' . fn) && !has_key(s:loaded, ns) && len(findfile('autoload/' . ns[0:-2] . '.vim', escape(&rtp, ' ')))
+    exe 'runtime! autoload/' . ns[0:-2] . '.vim'
+    let s:loaded[ns] = 1
+  endif
+  if len(ns) && exists('*' . fn)
+    return fn
+  else
+    return a:fn
+  endif
+endfunction
+
+command! -bar -bang DeleteFile
+  \ let s:file = fnamemodify(bufname(<q-args>),':p') |
+  \ execute 'bdelete<bang>' |
+  \ if !bufloaded(s:file) && s:fcall('delete', s:file) |
+  \   echoerr 'Failed to delete "'.s:file.'"' |
+  \ endif |
+  \ unlet s:file
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
+endfunction
+
+function! CopyFile()
+  let new_file_name = input('New file name: ', expand('%:p'), 'file')
+  exec ":saveas " . new_file_name
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
@@ -401,15 +454,6 @@ function! VisualSelection(direction, extra_filter) range
 
     let @/ = l:pattern
     let @" = l:saved_reg
-endfunction
-
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
 endfunction
 
 " Don't close window, when deleting a buffer
@@ -431,4 +475,10 @@ function! <SID>BufcloseCloseIt()
    if buflisted(l:currentBufNum)
      execute("bdelete! ".l:currentBufNum)
    endif
+endfunction
+
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
 endfunction
