@@ -9,7 +9,6 @@
 "    -> Status line
 "    -> Editing mappings
 "    -> vimgrep searching and cope displaying
-"    -> Spell checking
 "    -> Misc
 "    -> Helper functions
 "
@@ -57,8 +56,8 @@ set mouse=a
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+" Set 5 lines to the cursor - when moving vertically using j/k
+set so=5
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
@@ -79,11 +78,8 @@ endif
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-"Always show current position
-set ruler
-
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -104,8 +100,23 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
+" For fast scrolling
+set ttyfast
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
+
+" set cursorline
+
+" This selects the default regexp engine. |two-engines|
+" The possible values are:
+  " 0  automatic selection
+  " 1  old engine
+  " 2  NFA engine
+" set regexpengine=0
+
+" Faster redraw for ruby files
+" autocmd FileType ruby setlocal regexpengine=1
 
 " For regular expressions turn magic on
 set magic
@@ -127,7 +138,6 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
 " Add a bit extra margin to the left
 set foldcolumn=1
 
@@ -140,11 +150,11 @@ syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
+  set t_Co=256
 endif
 
 try
-    colorscheme desert
+  colorscheme desert
 catch
 endtry
 
@@ -152,14 +162,14 @@ set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+  set guioptions-=T
+  set guioptions-=e
+  set t_Co=256
+  set guitablabel=%M\ %t
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+set encoding=UTF-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -169,9 +179,9 @@ set ffs=unix,dos,mac
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
+" set nobackup
+" set nowb
+" set noswapfile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -251,7 +261,7 @@ map <Leader>= <C-w>=
 map <leader>bn :vnew<cr>
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -264,12 +274,14 @@ map <leader>bp :bprevious<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>t<leader> :tabnext<cr>
+map <leader>th :tabprevious<cr>
+map <leader>tl :tabnext<cr>
+map <S-l> :tabnext<cr>
+map <S-h> :tabprevious<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <leader>t<leader> :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
@@ -299,6 +311,14 @@ set laststatus=2
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
+" Disable status line. Improves scrolling somehow
+" set noshowmode
+" set noruler
+" set noshowcmd
+
+" Do not show status line
+" set laststatus=0
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -313,10 +333,10 @@ map $ g_
 nmap <CR> o<Esc>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <S-j> mz:m+<cr>`z
+nmap <S-k> mz:m-2<cr>`z
+vmap <S-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <S-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Note: works only on MacVim
 if has("mac") || has("macunix")
@@ -325,15 +345,6 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -356,40 +367,13 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 map <leader><Space> :call SearchAndReplace('')<Left><Left>
 
 function SearchAndReplace(replacement)
-    let l:pattern = expand("<cword>")
+  let l:pattern = expand("<cword>")
 
-    execute "Ag -l \"" . l:pattern . "\" | xargs perl -pi -E \'s/" . l:pattern . "/" . a:replacement . "/g\'"
-    execute "Ag! \"" . a:replacement . "\""
+  execute "!Ag -l \"" . l:pattern . "\" | xargs perl -pi -E \'s/" . l:pattern . "/" . a:replacement . "/g\'"
+  execute "!Ag \"" . a:replacement . "\""
 
-    let @/ = l:pattern
+  let @/ = l:pattern
 endfunction
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ag, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -404,14 +388,55 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Copy current buffer path to clipboard
+nmap <leader>fp :let @+ = expand("%")<cr>
+
+" Clone a file into a given directory
+nmap <leader>cp :call CopyFile()<cr>
+
+" Delete file and buffer
+nmap <leader>dl :call DeleteFile<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! s:fcall(fn, path, ...) abort
+  return call(s:ffn(a:fn, a:path), [a:path] + a:000)
+endfunction
+
+function! s:ffn(fn, path) abort
+  let ns = tr(matchstr(a:path, '^\a\a\+:'), ':', '#')
+  let fn = ns . a:fn
+  if len(ns) && !exists('*' . fn) && !has_key(s:loaded, ns) && len(findfile('autoload/' . ns[0:-2] . '.vim', escape(&rtp, ' ')))
+    exe 'runtime! autoload/' . ns[0:-2] . '.vim'
+    let s:loaded[ns] = 1
+  endif
+  if len(ns) && exists('*' . fn)
+    return fn
+  else
+    return a:fn
+  endif
+endfunction
+
+command! -bar -bang DeleteFile
+  \ let s:file = fnamemodify(bufname(<q-args>),':p') |
+  \ execute 'bdelete<bang>' |
+  \ if !bufloaded(s:file) && s:fcall('delete', s:file) |
+  \   echoerr 'Failed to delete "'.s:file.'"' |
+  \ endif |
+  \ unlet s:file
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
+endfunction
+
+function! CopyFile()
+  let new_file_name = input('New file name: ', expand('%:p'), 'file')
+  exec ":saveas " . new_file_name
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
@@ -429,15 +454,6 @@ function! VisualSelection(direction, extra_filter) range
 
     let @/ = l:pattern
     let @" = l:saved_reg
-endfunction
-
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
 endfunction
 
 " Don't close window, when deleting a buffer
@@ -459,4 +475,10 @@ function! <SID>BufcloseCloseIt()
    if buflisted(l:currentBufNum)
      execute("bdelete! ".l:currentBufNum)
    endif
+endfunction
+
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
 endfunction
