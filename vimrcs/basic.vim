@@ -299,6 +299,14 @@ set laststatus=2
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
+" Disable status line. Improves scrolling somehow
+" set noshowmode
+" set noruler
+" set noshowcmd
+
+" Do not show status line
+" set laststatus=0
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
