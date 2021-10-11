@@ -16,6 +16,7 @@ call plug#begin('~/.vim-environment/sources_non_forked')
   Plug 'tpope/vim-surround'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/vim-easy-align'
   Plug 'vim-test/vim-test'
   Plug 'tpope/vim-rails'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -106,6 +107,8 @@ command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
   \ {'source': 'find '.(empty(<f-args>) ? '.' : <f-args>).' -type d',
   \  'sink': 'cd'}))
 
+" Open files
+nnoremap <Leader>j :Files<cr>
 
 " This line sets the word SearchAg as an alias
 " This alias is needed so we can use FZF for Ag, this means,
@@ -137,6 +140,15 @@ command! -bang -nargs=+ -complete=dir Rag call AgRaw(<q-args>, {'options': '--de
 """"""""""""""""""""""""""""""
 nmap <space>o <c-w>gf
 
+
+"""""""""""""""""""""""""""""""
+"" => Coc-explorer
+"""""""""""""""""""""""""""""""
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""""""
 "" => vim-easymotion
