@@ -3,24 +3,23 @@
 """"""""""""""""""""""""""""""
 
 call plug#begin('~/.vim-environment/sources_non_forked')
-  Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'kassio/neoterm'
-  Plug 'junegunn/fzf.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'terryma/vim-expand-region'
   Plug 'airblade/vim-gitgutter'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'vim-test/vim-test'
+  Plug 'drewtempelmeyer/palenight.vim'
   Plug 'tpope/vim-commentary'
   Plug 'itchyny/lightline.vim'
   Plug 'honza/vim-snippets'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'terryma/vim-expand-region'
   Plug 'tpope/vim-surround'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'tpope/vim-fugitive'
-  Plug 'junegunn/vim-easy-align'
-  Plug 'vim-test/vim-test'
   Plug 'tpope/vim-rails'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'junegunn/goyo.vim'
   Plug 'ayu-theme/ayu-vim'
   Plug 'AndrewRadev/splitjoin.vim'
 call plug#end()
@@ -68,6 +67,7 @@ set rtp+=/usr/local/opt/fzf
 " If installed using git
 set rtp+=~/.fzf
 
+nnoremap <Leader>m :Mark<cr>
 nnoremap <leader>. :Tags<Cr>
 nnoremap <leader>l :Lines<Cr>
 
@@ -143,7 +143,7 @@ nmap <space>o <c-w>gf
 
 
 """""""""""""""""""""""""""""""
-"" => Coc-explorer
+"" => Easy-Align
 """""""""""""""""""""""""""""""
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
