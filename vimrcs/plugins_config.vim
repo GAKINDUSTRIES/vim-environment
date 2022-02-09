@@ -22,6 +22,7 @@ call plug#begin('~/.vim-environment/sources_non_forked')
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'junegunn/goyo.vim'
   Plug 'ayu-theme/ayu-vim'
+  Plug 'AndrewRadev/splitjoin.vim'
 call plug#end()
 
 
